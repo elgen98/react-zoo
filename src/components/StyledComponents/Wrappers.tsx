@@ -8,8 +8,12 @@ export const AppWrapper = styled.div`
 
 export const AnimalWrapper = styled.div`
   width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const ImageWrapper = styled.div`
-  width: 90%;
+export const ImageWrapperSmall = styled.div`
+  width: 50%;
 `;

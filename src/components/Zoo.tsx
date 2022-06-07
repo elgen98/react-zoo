@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import IAnimal from "../models/IAnimal";
 import AnimalService from "../services/AnimalService";
+import { NameHeading } from "./StyledComponents/Headings";
 import { StyledImage } from "./StyledComponents/Images";
-import { AnimalWrapper, ImageWrapper } from "./StyledComponents/Wrappers";
+import { AnimalWrapper, ImageWrapperSmall } from "./StyledComponents/Wrappers";
 
 export default function Zoo() {
   const [animals, setAnimals] = useState<IAnimal[]>([]);
@@ -23,10 +24,10 @@ export default function Zoo() {
   let html = animals.map((animal) => {
     return (
       <AnimalWrapper key={animal.id}>
-        <h2>{animal.name}</h2>
-        <ImageWrapper>
+        <NameHeading>{animal.name}</NameHeading>
+        <ImageWrapperSmall>
           <StyledImage src={animal.imageUrl} alt={animal.name} />
-        </ImageWrapper>
+        </ImageWrapperSmall>
         <p>{animal.shortDescription}</p>
       </AnimalWrapper>
     );
