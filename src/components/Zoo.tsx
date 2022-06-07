@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import IAnimal from "../models/IAnimal";
 import AnimalService from "../services/AnimalService";
-import { NameHeading } from "./StyledComponents/Headings";
-import { StyledImage } from "./StyledComponents/Images";
-import {
-  AnimalWrapper,
-  AppWrapper,
-  ImageWrapperSmall,
-} from "./StyledComponents/Wrappers";
+import { Animals } from "./Animals";
+import { AppWrapper } from "./StyledComponents/Wrappers";
+
+const animalArray: IAnimal[] = [];
+
+export const ZooContext = createContext(animalArray);
 
 export default function Zoo() {
-  const [animals, setAnimals] = useState<IAnimal[]>([]);
+  const [animals, setAnimals] = useState(animalArray);
 
   useEffect(() => {
     if (animals.length !== 0) return;
@@ -25,17 +24,11 @@ export default function Zoo() {
 
   //localStorage.setItem("animals", JSON.stringify(animals));
 
-  let html = animals.map((animal) => {
-    return (
-      <AnimalWrapper key={animal.id}>
-        <NameHeading>{animal.name}</NameHeading>
-        <ImageWrapperSmall>
-          <StyledImage src={animal.imageUrl} alt={animal.name} />
-        </ImageWrapperSmall>
-        <p>{animal.shortDescription}</p>
-      </AnimalWrapper>
-    );
-  });
-
-  return <AppWrapper>{html}</AppWrapper>;
+  return (
+    <ZooContext.Provider value={animals}>
+      <AppWrapper>
+        <Animals />
+      </AppWrapper>
+    </ZooContext.Provider>
+  );
 }
