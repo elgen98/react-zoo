@@ -1,13 +1,18 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { AppWrapper } from "./components/StyledComponents/Wrappers";
+import Animal from "./components/Animal";
 import Zoo from "./components/Zoo";
 
 function App() {
   return (
-    <AppWrapper>
-      <Zoo />
-    </AppWrapper>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Zoo />}>
+          <Route path="/animals/:id" element={<Animal />}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

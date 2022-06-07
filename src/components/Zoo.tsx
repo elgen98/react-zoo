@@ -3,7 +3,11 @@ import IAnimal from "../models/IAnimal";
 import AnimalService from "../services/AnimalService";
 import { NameHeading } from "./StyledComponents/Headings";
 import { StyledImage } from "./StyledComponents/Images";
-import { AnimalWrapper, ImageWrapperSmall } from "./StyledComponents/Wrappers";
+import {
+  AnimalWrapper,
+  AppWrapper,
+  ImageWrapperSmall,
+} from "./StyledComponents/Wrappers";
 
 export default function Zoo() {
   const [animals, setAnimals] = useState<IAnimal[]>([]);
@@ -33,5 +37,5 @@ export default function Zoo() {
     );
   });
 
-  return <>{html}</>;
+  return <AppWrapper>{html}</AppWrapper>;
 }
