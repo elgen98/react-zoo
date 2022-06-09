@@ -1,7 +1,7 @@
 import { useEffect, useState, createContext } from "react";
 import IAnimal from "../models/IAnimal";
 import AnimalService from "../services/AnimalService";
-import { Animals } from "./Animals";
+import Animals  from "./Animals";
 import { AppWrapper } from "./StyledComponents/Wrappers";
 
 const animalArray: IAnimal[] = [];
@@ -17,7 +17,6 @@ export default function Zoo() {
     let service = new AnimalService();
 
     service.getAnimals().then((response) => {
-      console.log("Resulat från service", response);
       setAnimals(response);
     });
   });
