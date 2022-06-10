@@ -1,8 +1,7 @@
 import { useEffect, useState, createContext } from "react";
+import { Link, Outlet } from "react-router-dom";
 import IAnimal from "../models/IAnimal";
 import AnimalService from "../services/AnimalService";
-import Animals  from "./routes/Animals";
-import { AnimalsWrapper } from "./StyledComponents/Wrappers";
 
 const animalArray: IAnimal[] = [];
 
@@ -27,9 +26,10 @@ export default function Zoo() {
 
   return (
     <ZooContext.Provider value={animals}>
-      <AnimalsWrapper>
-        <Animals />
-      </AnimalsWrapper>
+      <header>
+        <Link to="/">Home</Link>
+      </header>
+      <Outlet />
     </ZooContext.Provider>
   );
 }
