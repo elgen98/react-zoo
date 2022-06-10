@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { NameHeading } from "../StyledComponents/Headings";
+import { StyledImage } from "../StyledComponents/Images";
+import { AnimalWrapper, ImageWrapperSmall } from "../StyledComponents/Wrappers";
+import { ZooContext } from "../Zoo";
 import Animal from "./Animal";
-import { NameHeading } from "./StyledComponents/Headings";
-import { StyledImage } from "./StyledComponents/Images";
-import { AnimalWrapper, ImageWrapperSmall } from "./StyledComponents/Wrappers";
-import { ZooContext } from "./Zoo";
 
 export default function Animals() {
-  const animals = useContext(ZooContext);
+  const animals = useContext(ZooContext);  
 
   let html = animals.map((animal) => {
     return (
@@ -22,7 +22,10 @@ export default function Animals() {
     );
   });
 
-  return <>
+  return (
+  <>
   {html}
-  </>;
+  <Animal />
+  </>
+  );
 }

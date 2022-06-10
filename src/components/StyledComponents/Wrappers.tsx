@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AppWrapper = styled.div`
+export const AnimalsWrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;

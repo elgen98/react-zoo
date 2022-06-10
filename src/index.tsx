@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Animal from './components/Animal';
+import Animal from './components/routes/Animal';
 import Zoo from './components/Zoo';
+import Layout from './components/Layout';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,8 +14,10 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Zoo />}/>
-          <Route path='animal/:id' element={<Animal />} />
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Zoo />} />
+          <Route path='/animal/:id' element={<Animal />}/>
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
