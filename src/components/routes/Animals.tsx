@@ -20,7 +20,7 @@ export default function Animals() {
           <StyledImage src={animal.imageUrl} alt={animal.name} />
         </ImageWrapperSmall>
         <p>{animal.shortDescription}</p>
-        <Link to={`animal/${animal.id}`}>Check</Link>
+        <Link to={`animal/${animal.id - 1}`}>Check</Link>
       </AnimalWrapper>
     );
   });
