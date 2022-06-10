@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
+import { Link, Outlet } from "react-router-dom";
 import IAnimal from "../models/IAnimal";
 import AnimalService from "../services/AnimalService";
-import { NameHeading } from "./StyledComponents/Headings";
-import { StyledImage } from "./StyledComponents/Images";
-import { AnimalWrapper, ImageWrapperSmall } from "./StyledComponents/Wrappers";
+
+const animalArray: IAnimal[] = [];
+
+export const ZooContext = createContext(animalArray);
 
 export default function Zoo() {
-  const [animals, setAnimals] = useState<IAnimal[]>([]);
+  const [animals, setAnimals] = useState(animalArray);
 
   useEffect(() => {
     if (animals.length !== 0) return;
@@ -14,24 +16,20 @@ export default function Zoo() {
     let service = new AnimalService();
 
     service.getAnimals().then((response) => {
-      console.log("Resulat från service", response);
       setAnimals(response);
     });
   });
 
   //localStorage.setItem("animals", JSON.stringify(animals));
+  // Behöver Outlet och en Layout
+  // Kika Context till Animal.tsx
 
-  let html = animals.map((animal) => {
-    return (
-      <AnimalWrapper key={animal.id}>
-        <NameHeading>{animal.name}</NameHeading>
-        <ImageWrapperSmall>
-          <StyledImage src={animal.imageUrl} alt={animal.name} />
-        </ImageWrapperSmall>
-        <p>{animal.shortDescription}</p>
-      </AnimalWrapper>
-    );
-  });
-
-  return <>{html}</>;
+  return (
+    <ZooContext.Provider value={animals}>
+      <header>
+        <Link to="/">Home</Link>
+      </header>
+      <Outlet />
+    </ZooContext.Provider>
+  );
 }
