@@ -17,3 +17,12 @@ export const AnimalWrapper = styled.div`
 export const ImageWrapperSmall = styled.div`
   width: 50%;
 `;
+
+export const ImageWrapperBig = styled.div`
+  width: 75%;
+`;
+
+export const NameWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
