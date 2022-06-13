@@ -1,11 +1,10 @@
-import { useEffect, useState, createContext } from "react";
-import { Link, Outlet } from "react-router-dom";
-import IAnimal from "../models/IAnimal";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AnimalService from "../services/AnimalService";
-
-const animalArray: IAnimal[] = [];
-
-export const ZooContext = createContext(animalArray);
+import { ZooContext, animalArray } from "../contexts/ZooContext";
+import Animals from "./Animals";
+import Animal from "./Animal";
+import IAnimal from "../models/IAnimal";
 
 export default function Zoo() {
   const [animals, setAnimals] = useState(animalArray);
@@ -20,16 +19,26 @@ export default function Zoo() {
     });
   });
 
+  function checkState(animals: IAnimal[]) {
+    setAnimals(animals);
+    console.log(animals);
+  }
+
   //localStorage.setItem("animals", JSON.stringify(animals));
   // Behöver Outlet och en Layout
   // Kika Context till Animal.tsx
 
   return (
     <ZooContext.Provider value={animals}>
-      <header>
-        <Link to="/">Home</Link>
-      </header>
-      <Outlet />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Animals />} />
+          <Route
+            path="animal/:id"
+            element={<Animal setAnimals={checkState} />}
+          />
+        </Routes>
+      </BrowserRouter>
     </ZooContext.Provider>
   );
 }
