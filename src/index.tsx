@@ -2,23 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Animal from "./components/routes/Animal";
 import Zoo from "./components/Zoo";
-import Animals from "./components/routes/Animals";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Zoo />}>
-          <Route index element={<Animals />} />
-          <Route path="/animal/:id" element={<Animal />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Zoo />
   </React.StrictMode>
 );
 

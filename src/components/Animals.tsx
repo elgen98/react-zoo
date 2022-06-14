@@ -1,16 +1,17 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { NameHeading } from "../StyledComponents/Headings";
-import { StyledImage } from "../StyledComponents/Images";
+import IAnimal from "../models/IAnimal";
+import { NameHeading } from "./StyledComponents/Headings";
+import { StyledImage } from "./StyledComponents/Images";
 import {
   AnimalsWrapper,
   AnimalWrapper,
   ImageWrapperSmall,
-} from "../StyledComponents/Wrappers";
-import { ZooContext } from "../Zoo";
+} from "./StyledComponents/Wrappers";
+import { ZooContext } from "../contexts/ZooContext";
 
 export default function Animals() {
-  const animals = useContext(ZooContext);
+  const animals: IAnimal[] = useContext(ZooContext);
 
   let html = animals.map((animal) => {
     return (
