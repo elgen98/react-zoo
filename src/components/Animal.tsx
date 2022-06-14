@@ -4,7 +4,8 @@ import { IAnimal, defaultValue } from "../models/IAnimal";
 import { NameHeadingBig } from "./StyledComponents/Headings";
 import { StyledImage } from "./StyledComponents/Images";
 import {
-  AnimalWrapper,
+  AnimalPageWrapper,
+  BigAnimalWrapper,
   ImageWrapperBig,
   NameWrapper,
 } from "./StyledComponents/Wrappers";
@@ -29,11 +30,12 @@ export default function Animal(props: IAnimalProps) {
   const [currentAnimal, setCurrentAnimal] = useState(defaultValue);
 
   useEffect(() => {
+    if (currentAnimal !== defaultValue) return;
     if (id) {
       index.current = parseInt(id);
       setCurrentAnimal(animals[index.current]);
     }
-  }, []);
+  });
 
   function updateState(animal: IAnimal): void {
     setCurrentAnimal({ ...animal });
@@ -43,11 +45,11 @@ export default function Animal(props: IAnimalProps) {
   }
 
   return (
-    <>
+    <AnimalPageWrapper>
       <header>
         <Link to="/">Hem</Link>
       </header>
-      <AnimalWrapper>
+      <BigAnimalWrapper>
         <NameWrapper>
           <NameHeadingBig>{currentAnimal.name}</NameHeadingBig>
           <small>({currentAnimal.latinName})</small>
@@ -75,9 +77,9 @@ export default function Animal(props: IAnimalProps) {
             <div>Jag är hungrig.</div>
           )}
           <FeedButton recievedAnimal={currentAnimal} feedAnimal={updateState} />
-          <small> Senaste matningen: {currentAnimal.lastFed}</small>
+          <small> Senast matad: {currentAnimal.lastFed}</small>
         </div>
-      </AnimalWrapper>
-    </>
+      </BigAnimalWrapper>
+    </AnimalPageWrapper>
   );
 }
