@@ -9,6 +9,7 @@ import {
   ImageWrapperSmall,
 } from "./StyledComponents/Wrappers";
 import { ZooContext } from "../contexts/ZooContext";
+import { imageOnErrorHandler } from "../utils/ImageErrorHandler";
 
 export default function Animals() {
   const animals: IAnimal[] = useContext(ZooContext);
@@ -18,7 +19,11 @@ export default function Animals() {
       <AnimalWrapper key={animal.id}>
         <NameHeading>{animal.name}</NameHeading>
         <ImageWrapperSmall>
-          <StyledImage src={animal.imageUrl} alt={animal.name} />
+          <StyledImage
+            src={animal.imageUrl}
+            alt={animal.name}
+            onError={imageOnErrorHandler}
+          />
         </ImageWrapperSmall>
         <p>{animal.shortDescription}</p>
         <Link to={`animal/${animal.id - 1}`}>Check</Link>

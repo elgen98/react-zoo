@@ -10,6 +10,7 @@ import {
 } from "./StyledComponents/Wrappers";
 import { ZooContext } from "../contexts/ZooContext";
 import FeedButton from "./FeedButton";
+import { imageOnErrorHandler } from "../utils/ImageErrorHandler";
 
 interface IParams {
   id: string;
@@ -18,6 +19,8 @@ interface IParams {
 interface IAnimalProps {
   setAnimals(animals: IAnimal[]): void;
 }
+
+//const errorImage = "../assets/imageNotFound.png";
 
 export default function Animal(props: IAnimalProps) {
   const animals: IAnimal[] = useContext(ZooContext);
@@ -50,7 +53,11 @@ export default function Animal(props: IAnimalProps) {
           <small>({currentAnimal.latinName})</small>
         </NameWrapper>
         <ImageWrapperBig>
-          <StyledImage src={currentAnimal.imageUrl} alt={currentAnimal.name} />
+          <StyledImage
+            src={currentAnimal.imageUrl}
+            alt={currentAnimal.name}
+            onError={imageOnErrorHandler}
+          />
         </ImageWrapperBig>
         <p>
           Född: {currentAnimal.yearOfBirth}
