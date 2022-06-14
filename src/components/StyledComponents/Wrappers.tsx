@@ -15,7 +15,8 @@ export const AnimalWrapper = styled.div`
 `;
 
 export const ImageWrapperSmall = styled.div`
-  width: 50%;
+  width: 300px;
+  height: 300px;
 `;
 
 export const ImageWrapperBig = styled.div`

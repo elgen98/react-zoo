@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import IAnimal from "../models/IAnimal";
+import { IAnimal, defaultValue } from "../models/IAnimal";
 import { NameHeadingBig } from "./StyledComponents/Headings";
 import { StyledImage } from "./StyledComponents/Images";
 import {
@@ -22,9 +22,15 @@ interface IAnimalProps {
 export default function Animal(props: IAnimalProps) {
   const animals: IAnimal[] = useContext(ZooContext);
   const { id }: any = useParams<Partial<IParams>>();
+  const [currentAnimal, setCurrentAnimal] = useState(defaultValue);
   // Ta bort any
 
-  const [currentAnimal, setCurrentAnimal] = useState(animals[id]);
+  useEffect(() => {
+    if (id) {
+      setCurrentAnimal(animals[id]);
+    }
+  }, []);
+
   // Skicka currentAnimal till feedbutton sen lifting state up hit som sedan uppdateras state i zoo.
 
   function updateState(animal: IAnimal) {

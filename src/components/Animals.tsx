@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import IAnimal from "../models/IAnimal";
+import { IAnimal } from "../models/IAnimal";
 import { NameHeading } from "./StyledComponents/Headings";
 import { StyledImage } from "./StyledComponents/Images";
 import {

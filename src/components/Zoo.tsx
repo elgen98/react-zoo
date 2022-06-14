@@ -4,7 +4,7 @@ import AnimalService from "../services/AnimalService";
 import { ZooContext, animalArray } from "../contexts/ZooContext";
 import Animals from "./Animals";
 import Animal from "./Animal";
-import IAnimal from "../models/IAnimal";
+import { IAnimal } from "../models/IAnimal";
 
 export default function Zoo() {
   const [animals, setAnimals] = useState(animalArray);

@@ -1,4 +1,4 @@
-import IAnimal from "../models/IAnimal";
+import { IAnimal } from "../models/IAnimal";
 
 interface IFeedButtonProps {
   recievedAnimal: IAnimal;
