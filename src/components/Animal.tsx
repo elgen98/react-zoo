@@ -27,12 +27,11 @@ export default function Animal(props: IAnimalProps) {
   const [currentAnimal, setCurrentAnimal] = useState(animals[id]);
   // Skicka currentAnimal till feedbutton sen lifting state up hit som sedan uppdateras state i zoo.
 
-  function updateState(a: IAnimal) {
-    if (a.isFed === false) a.isFed = true;
-    a.lastFed = new Date().toUTCString();
-    setCurrentAnimal({ ...currentAnimal, isFed: a.isFed, lastFed: a.lastFed });
+  function updateState(animal: IAnimal) {
+    setCurrentAnimal({ ...animal });
     animals[id] = currentAnimal;
     props.setAnimals(animals);
+    console.log(currentAnimal);
   }
 
   return (

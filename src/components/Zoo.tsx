@@ -16,17 +16,15 @@ export default function Zoo() {
 
     service.getAnimals().then((response) => {
       setAnimals(response);
+      localStorage.setItem("animals", JSON.stringify(response));
     });
   });
 
   function checkState(animals: IAnimal[]) {
     setAnimals(animals);
     console.log(animals);
+    localStorage.setItem("animals", JSON.stringify(animals));
   }
-
-  //localStorage.setItem("animals", JSON.stringify(animals));
-  // Behöver Outlet och en Layout
-  // Kika Context till Animal.tsx
 
   return (
     <ZooContext.Provider value={animals}>
