@@ -12,9 +12,12 @@ export default function FeedButton(props: IFeedButtonProps) {
     props.feedAnimal(animal);
   }
 
-  return (
-    <>
-      <button onClick={() => prepareFood(props.recievedAnimal)}>Mata</button>
-    </>
+  let button = (
+    <button onClick={() => prepareFood(props.recievedAnimal)}>Mata</button>
   );
+  if (props.recievedAnimal.isFed) {
+    button = <button disabled>Mata</button>;
+  }
+
+  return <>{button}</>;
 }
