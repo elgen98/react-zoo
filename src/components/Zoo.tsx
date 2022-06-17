@@ -5,6 +5,7 @@ import { ZooContext, animalArray } from "../contexts/ZooContext";
 import Animals from "./Animals";
 import Animal from "./Animal";
 import { IAnimal } from "../models/IAnimal";
+import PageNotFound from "./PageNotFound";
 
 export default function Zoo() {
   const [animals, setAnimals] = useState(animalArray);
@@ -22,7 +23,6 @@ export default function Zoo() {
 
   function checkState(animals: IAnimal[]) {
     setAnimals(animals);
-    console.log(animals);
     localStorage.setItem("animals", JSON.stringify(animals));
   }
 
@@ -35,6 +35,7 @@ export default function Zoo() {
             path="animal/:id"
             element={<Animal setAnimals={checkState} />}
           />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </ZooContext.Provider>

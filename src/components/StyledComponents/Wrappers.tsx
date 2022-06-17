@@ -13,7 +13,7 @@ export const AnimalPageWrapper = styled(AnimalsWrapper)`
   flex-direction: column;
   align-items: center;
   flex-wrap: nowrap;
-  height: 180vh;
+  height: 200vh;
 `;
 
 export const AnimalWrapper = styled.div`

@@ -24,8 +24,6 @@ interface IAnimalProps {
   setAnimals(animals: IAnimal[]): void;
 }
 
-//const errorImage = "../assets/imageNotFound.png";
-
 export default function Animal(props: IAnimalProps) {
   const animals: IAnimal[] = useContext(ZooContext);
   const { id } = useParams<Partial<IParams>>();
@@ -44,7 +42,6 @@ export default function Animal(props: IAnimalProps) {
     setCurrentAnimal({ ...animal });
     animals[index.current] = currentAnimal;
     props.setAnimals(animals);
-    console.log(currentAnimal);
   }
 
   return (
