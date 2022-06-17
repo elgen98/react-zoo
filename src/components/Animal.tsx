@@ -4,6 +4,7 @@ import { IAnimal, defaultValue } from "../models/IAnimal";
 import { NameHeadingBig } from "./StyledComponents/Headings";
 import { StyledImage } from "./StyledComponents/Images";
 import {
+  AnimalFoodWrapper,
   AnimalInfoWrapper,
   AnimalPageWrapper,
   BigAnimalWrapper,
@@ -73,15 +74,15 @@ export default function Animal(props: IAnimalProps) {
             <p>{currentAnimal.longDescription}</p>
           </StyledDetails>
         </AnimalInfoWrapper>
-        <div>
+        <AnimalFoodWrapper>
           {currentAnimal.isFed ? (
-            <div>Jag är mätt.</div>
+            <strong>Jag är mätt.</strong>
           ) : (
-            <div>Jag är hungrig.</div>
+            <strong>Jag är hungrig.</strong>
           )}
           <FeedButton recievedAnimal={currentAnimal} feedAnimal={updateState} />
           <small> Senast matad: {currentAnimal.lastFed}</small>
-        </div>
+        </AnimalFoodWrapper>
       </BigAnimalWrapper>
     </AnimalPageWrapper>
   );

@@ -22,14 +22,33 @@ export const AnimalWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
   @media only screen and (min-width: 600px) {
     width: 30%;
   }
 `;
 
 export const AnimalInfoWrapper = styled.div`
-  p {
-    font-size: 16pt;
+  b ~ p {
+    font-size: 14pt;
+  }
+`;
+
+export const AnimalFoodWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    background-color: #67ca67;
+    color: black;
+  }
+  button:disabled {
+    opacity: 50%;
   }
 `;
 
