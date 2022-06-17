@@ -40,6 +40,7 @@ export const AnimalFoodWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 5px;
+  margin-top: 10px;
   button {
     border: none;
     border-radius: 5px;
