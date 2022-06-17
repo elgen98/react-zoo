@@ -10,7 +10,7 @@ import {
 } from "./StyledComponents/Wrappers";
 import { ZooContext } from "../contexts/ZooContext";
 import { imageOnErrorHandler } from "../utils/ImageErrorHandler";
-import { StyledLink } from "./StyledComponents/Links&Buttons";
+import { StyledLink } from "./StyledComponents/MiscTags";
 
 export default function Animals() {
   const animals: IAnimal[] = useContext(ZooContext);
@@ -28,7 +28,7 @@ export default function Animals() {
         </ImageWrapperSmall>
         <p>{animal.shortDescription}</p>
         <StyledLink>
-          <Link to={`animal/${animal.id - 1}`}>Check</Link>
+          <Link to={`animal/${animal.id - 1}`}>Inspektera</Link>
         </StyledLink>
       </AnimalWrapper>
     );

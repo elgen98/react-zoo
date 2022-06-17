@@ -4,6 +4,7 @@ import { IAnimal, defaultValue } from "../models/IAnimal";
 import { NameHeadingBig } from "./StyledComponents/Headings";
 import { StyledImage } from "./StyledComponents/Images";
 import {
+  AnimalInfoWrapper,
   AnimalPageWrapper,
   BigAnimalWrapper,
   ImageWrapperBig,
@@ -12,6 +13,7 @@ import {
 import { ZooContext } from "../contexts/ZooContext";
 import FeedButton from "./FeedButton";
 import { imageOnErrorHandler } from "../utils/ImageErrorHandler";
+import { HomeLink, StyledDetails } from "./StyledComponents/MiscTags";
 
 interface IParams {
   id: string;
@@ -47,7 +49,9 @@ export default function Animal(props: IAnimalProps) {
   return (
     <AnimalPageWrapper>
       <header>
-        <Link to="/">Hem</Link>
+        <HomeLink>
+          <Link to="/">Hem</Link>
+        </HomeLink>
       </header>
       <BigAnimalWrapper>
         <NameWrapper>
@@ -61,15 +65,14 @@ export default function Animal(props: IAnimalProps) {
             onError={imageOnErrorHandler}
           />
         </ImageWrapperBig>
-        <p>
-          Född: {currentAnimal.yearOfBirth}
-          <br />
-          {currentAnimal.shortDescription}
-        </p>
-        <details>
-          <summary>Utökad information</summary>
-          <p>{currentAnimal.longDescription}</p>
-        </details>
+        <AnimalInfoWrapper>
+          <b>Född: {currentAnimal.yearOfBirth}</b>
+          <p>{currentAnimal.shortDescription}</p>
+          <StyledDetails>
+            <summary>Utökad information</summary>
+            <p>{currentAnimal.longDescription}</p>
+          </StyledDetails>
+        </AnimalInfoWrapper>
         <div>
           {currentAnimal.isFed ? (
             <div>Jag är mätt.</div>
